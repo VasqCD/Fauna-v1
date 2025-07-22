@@ -149,10 +149,81 @@ class ArCameraFragment : Fragment(), GLSurfaceView.Renderer {
     }
 
     private fun resetSession() {
-        anchors.clear()
-        session?.close()
-        createSession()
-        binding.tvArInfo.text = "Sesión reiniciada - Mueve el dispositivo"
+        // Ejecutar todo en el hilo del GLSurfaceView para evitar concurrencia
+        binding.surfaceView.queueEvent {
+            try {
+                // Limpiar datos locales
+                anchors.clear()
+                queuedSingleTaps.clear()
+
+                // Actualizar UI
+                requireActivity().runOnUiThread {
+                    binding.tvArInfo.text = "Reiniciando AR..."
+                }
+
+                // Cerrar sesión de forma segura
+                session?.let { currentSession ->
+                    try {
+                        currentSession.pause()
+                        currentSession.close()
+                    } catch (e: Exception) {
+                        // Ignorar errores al cerrar sesión
+                    }
+                }
+                session = null
+
+                // Pequeña pausa para que ARCore se limpie
+                Thread.sleep(300)
+
+                // Recrear sesión
+                createSessionSafely()
+
+            } catch (e: Exception) {
+                requireActivity().runOnUiThread {
+                    binding.tvArInfo.text = "Error reiniciando AR: ${e.message}"
+                    Toast.makeText(requireContext(), "Error reiniciando AR. Intenta nuevamente.", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun createSessionSafely() {
+        try {
+            // Verificar que el contexto sigue siendo válido
+            if (!isAdded || isDetached) {
+                return
+            }
+
+            // Crear nueva sesión ARCore
+            session = Session(requireContext())
+
+            // Configurar sesión
+            val config = Config(session).apply {
+                planeFindingMode = Config.PlaneFindingMode.HORIZONTAL
+                lightEstimationMode = Config.LightEstimationMode.ENVIRONMENTAL_HDR
+            }
+
+            session?.configure(config)
+
+            // Reanudar la sesión para activar la cámara
+            session?.resume()
+
+            // Reinicializar el background renderer para la nueva sesión
+            backgroundRenderer.createOnGlThread(requireContext())
+
+            // Configurar la textura de la cámara con el nuevo renderer
+            session?.setCameraTextureName(backgroundRenderer.textureId)
+
+            // Actualizar UI en el hilo principal
+            requireActivity().runOnUiThread {
+                binding.tvArInfo.text = "Sesión reiniciada - Mueve el dispositivo"
+            }
+
+        } catch (e: Exception) {
+            requireActivity().runOnUiThread {
+                showError("Error creando sesión AR: ${e.message}")
+            }
+        }
     }
 
     private fun onSingleTap(event: MotionEvent) {
