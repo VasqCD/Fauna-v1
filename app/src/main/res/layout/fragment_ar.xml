@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fauna_background"
+    tools:context=".ui.ar.ArCameraFragment">
+
+    <!-- GLSurfaceView para renderizar AR -->
+    <android.opengl.GLSurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Tarjeta con información para el usuario -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_margin="16dp"
+        style="@style/Widget.Fauna.CardView"
+        app:cardElevation="8dp"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_ar_modern"
+                android:layout_marginEnd="12dp"
+                app:tint="@color/fauna_primary" />
+
+            <TextView
+                android:id="@+id/tv_ar_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Iniciando ARCore..."
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/fauna_on_surface"
+                android:lineHeight="20dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Botón de reinicio AR con estilo moderno -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_reset_ar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="32dp"
+        android:text="Reiniciar AR"
+        app:icon="@drawable/ic_fauna_star"
+        app:backgroundTint="@color/fauna_secondary"
+        app:iconTint="@color/white"
+        android:textColor="@color/white"
+        app:elevation="12dp"
+        app:cornerRadius="28dp" />
+
+    <!-- Indicador de estado AR -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        style="@style/Widget.Fauna.CardView"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:id="@+id/ar_status_indicator"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/status_indicator_shape"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AR Activo"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="@color/fauna_on_surface" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

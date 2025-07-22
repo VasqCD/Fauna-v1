@@ -22,4 +22,10 @@
         android:name="com.honduras.fauna.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_ar"
+        android:name="com.honduras.fauna.ui.ar.ArCameraFragment"
+        android:label="Realidad Aumentada"
+        tools:layout="@layout/fragment_ar" />
 </navigation>

@@ -1,16 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Fauna" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <!-- Forzar modo claro incluso en configuración nocturna -->
+    <style name="Theme.Fauna" parent="Theme.Material3.Light">
+        <!-- Usar los mismos colores que en modo claro -->
+        <item name="colorPrimary">@color/fauna_primary</item>
+        <item name="colorOnPrimary">@color/fauna_on_primary</item>
+        <item name="colorPrimaryContainer">@color/fauna_primary_variant</item>
+        <item name="colorOnPrimaryContainer">@color/fauna_on_primary</item>
+
+        <item name="colorSecondary">@color/fauna_secondary</item>
+        <item name="colorOnSecondary">@color/fauna_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/fauna_secondary_variant</item>
+        <item name="colorOnSecondaryContainer">@color/fauna_on_secondary</item>
+
+        <item name="colorSurface">@color/fauna_surface</item>
+        <item name="colorOnSurface">@color/fauna_on_surface</item>
+        <item name="colorSurfaceVariant">@color/fauna_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/fauna_on_surface_variant</item>
+
+        <item name="android:colorBackground">@color/fauna_background</item>
+        <item name="colorOnBackground">@color/fauna_on_background</item>
+
+        <item name="colorOutline">@color/fauna_outline</item>
+        <item name="colorOutlineVariant">@color/fauna_outline_variant</item>
+
+        <item name="colorError">@color/fauna_error</item>
+        <item name="colorOnError">@color/fauna_on_error</item>
+
+        <!-- Status bar y navigation bar en modo claro -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/fauna_surface</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Forzar modo claro -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
+
+    <style name="Theme.Fauna.NoActionBar" parent="Theme.Fauna">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
+    </style>
+
+    <style name="Theme.Fauna.AppBarOverlay" parent="ThemeOverlay.Material3.Light">
+        <item name="colorSurface">@color/fauna_primary</item>
+        <item name="colorOnSurface">@color/fauna_on_primary</item>
+    </style>
+
+    <style name="Theme.Fauna.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 </resources>

@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Paleta de colores personalizada para Fauna App -->
+
+    <!-- Colores primarios (Verde natural/fauna) -->
+    <color name="fauna_primary">#2E7D32</color>
+    <color name="fauna_primary_variant">#1B5E20</color>
+    <color name="fauna_on_primary">#FFFFFF</color>
+
+    <!-- Colores secundarios (Naranja tierra) -->
+    <color name="fauna_secondary">#FF8F00</color>
+    <color name="fauna_secondary_variant">#E65100</color>
+    <color name="fauna_on_secondary">#FFFFFF</color>
+
+    <!-- Colores de superficie -->
+    <color name="fauna_surface">#FAFAFA</color>
+    <color name="fauna_on_surface">#1C1B1F</color>
+    <color name="fauna_surface_variant">#E7E0EC</color>
+    <color name="fauna_on_surface_variant">#49454F</color>
+
+    <!-- Colores de fondo -->
+    <color name="fauna_background">#FFFBFE</color>
+    <color name="fauna_on_background">#1C1B1F</color>
+
+    <!-- Colores de acento para AR -->
+    <color name="ar_plane_color">#4CAF50</color>
+    <color name="ar_plane_border">#2E7D32</color>
+    <color name="ar_object_highlight">#FF9800</color>
+
+    <!-- Colores de estado -->
+    <color name="fauna_error">#BA1A1A</color>
+    <color name="fauna_on_error">#FFFFFF</color>
+    <color name="fauna_warning">#F57C00</color>
+    <color name="fauna_success">#388E3C</color>
+
+    <!-- Colores outline -->
+    <color name="fauna_outline">#79747E</color>
+    <color name="fauna_outline_variant">#CAC4D0</color>
+
+    <!-- Solo modo claro - sin colores oscuros -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Colores de compatibilidad para evitar errores de compilación -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 </resources>
